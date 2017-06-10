@@ -38,7 +38,8 @@
 * `Color.distance(c1, c2, c_type)` ：该方法返回两个颜色的距离。颜色的距离可视为在空间直角坐标系下，点`(c1.r, c1.g, c1.b)`和点`(c2.r, c2.g, c2.b)`之间的距离，支持三种方式：
 	* `c_type == 1` 或 `c_type == 'hamiltion'`（大小写不敏感）时，返回两个颜色的Hamilton距离，即`|c1.r-c2.r| + |c1.g-c2.g| + |c1.b-c2.b|`
 	* `c_type == 2` 或 `c_type == 'chebyshev'`（大小写不敏感）时，返回两个颜色的Chebyshev距离，即`max(|c1.r-c2.r|, |c1.g-c2.g|, |c1.b-c2.b|)`
-	* 其他情况，或者`c_type`缺省时，返回两个颜色的Euler距离，即`sqrt((c1.r-c2.r)^2+(c1.g-c2.g)^2+(c1.b-c2.b)^2)`
+	* 其他合法情况，或者`c_type`缺省时，返回两个颜色的Euler距离，即`sqrt((c1.r-c2.r)^2+(c1.g-c2.g)^2+(c1.b-c2.b)^2)`
+	* 非法情况下返回`null`
 
 
 ### 其他
