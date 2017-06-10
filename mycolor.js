@@ -157,7 +157,9 @@ function Color() {
 			value /= parseFloat(reg_div.exec(change)[1]);
 		} else if (reg_num.test(change)) {
 			value = parseFloat(reg_num.exec(change)[1]);
-		};
+		} else {
+			return null;
+		}
 		return value;
 	}
 	
