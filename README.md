@@ -36,8 +36,16 @@
 
 
 ### 其他
-本库中，给字符串类型添加了一个原型方法`to_color`，可以将字符串转化为颜色类，`str.to_color()`等价于`new Color(str)`，在*jquery*中，使用`css()`方法获取颜色时，这样的语法可以增加代码的美观性。
+本库中，给字符串类型添加了一个原型方法`to_color`，可以将字符串转化为颜色类，`str.to_color()`等价于`new Color(str)`，在*jquery*中，使用`css()`方法获取颜色时，这样的语法可以增加代码的美观性。例如：
+* 构造函数式
+```javascript
+var color = new Color($("#div").css("background-color"));
+```
 
+* 原型方法式
+```javascript
+var color = $("#div").css("background-color").to_color();
+```
 
 
 ## ColorList 类
