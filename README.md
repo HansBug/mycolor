@@ -33,7 +33,10 @@
 
 
 ### 类方法
-
+* `Color.color_name_list` ：返回一个对象，里面存有css默认支持的颜色名及其对应的颜色（即为Color类以颜色名方式初始化时所支持的范围）
+* `Color.validation(c)` ： 返回一个布尔值，即将单个值c是否可以进行合法的初始化，可以返回`true`，不可以返回`false`
+* `Color.distance(c1, c2, c_type)` ：该方法返回两个颜色的距离。颜色的距离可视为在空间直角坐标系下，点`(c1.r, c1.g, c1.b)`和点`(c2.r, c2.g, c2.b)`之间的距离，支持三种方式：
+	* `c_type == 1` 或 `c_type == 'hamiltion'`（大小写不敏感）时，返回两个颜色的Hamilton距离，即`\(max(\left| c1.r - c2.r \right|)\)`
 
 
 ### 其他
