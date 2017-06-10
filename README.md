@@ -56,6 +56,34 @@ var new_c = c.m_r(100);
 ```
 则`new_c == new Color(100, 50, 100, 0.8)`
 
+* `"+=x"` ： 将值增加`x`，例如
+```javascript
+var c = new Color(10, 50, 100, 0.8);
+var new_c = c.m_r("+=100");
+```
+则`new_c == new Color(110, 50, 100, 0.8)`
+
+* `"-=x"` ： 将值增加`x`，例如
+```javascript
+var c = new Color(10, 50, 100, 0.8);
+var new_c = c.m_r("-=5");
+```
+则`new_c == new Color(5, 50, 100, 0.8)`
+
+* `"*=x"` ： 将值增加`x`，例如
+```javascript
+var c = new Color(10, 50, 100, 0.8);
+var new_c = c.m_r("*=10");
+```
+则`new_c == new Color(100, 50, 100, 0.8)`
+
+* `"/=x"` ： 将值增加`x`，例如
+```javascript
+var c = new Color(10, 50, 100, 0.8);
+var new_c = c.m_a("/=2");
+```
+则`new_c == new Color(10, 50, 100, 0.4)`
+
 ### 类方法
 * `Color.color_name_list` ：返回一个对象，里面存有css默认支持的颜色名及其对应的颜色（即为Color类以颜色名方式初始化时所支持的范围）
 * `Color.validation(c)` ： 返回一个布尔值，即将单个值c是否可以进行合法的初始化，可以返回`true`，不可以返回`false`
