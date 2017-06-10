@@ -88,10 +88,10 @@ function Color() {
 	/*  共有方法  */
 	/*  输出部分  */
 	this.toString = function() {
-		return this.color_rgba();
+		return this.to_rgba();
 	}
 	
-	this.color_rgb = function() {
+	this.to_rgb = function() {
 		data_validation(this);
 		var r = Math.round(this.r);
 		var g = Math.round(this.g);
@@ -99,7 +99,7 @@ function Color() {
 		return "rgb(" + r + "," + g + "," + b + ")";
 	};
 	
-	this.color_rgba = function() {
+	this.to_rgba = function() {
 		data_validation(this);
 		var r = Math.round(this.r);
 		var g = Math.round(this.g);
@@ -107,7 +107,7 @@ function Color() {
 		return "rgba(" + r + "," + g + "," + b + "," + this.a + ")";
 	};
 	
-	this.color_sharp = function() {
+	this.to_sharp = function() {
 		function int_to_hex(num) {
 			var s = "", t = num;
 			while (t > 0) {

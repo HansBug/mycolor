@@ -7,9 +7,10 @@
     <meta name="csrf-token" content="liEzvOsqVNA4sUp9og8ckT5wZCDlB2uL0MR2utxL">
 
     <title>demo for mycolor</title>
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 	<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    
 
 	<script src="mycolor.js"></script>
 
@@ -26,7 +27,7 @@
 		$("#main").click(function(){
 			function px() {
 				i += 0.01;
-				$("#main").css("background-color", $("#main").css("background-color").to_color().m_a("-=0.01").color_rgba());
+				$("#main").css("background-color", $("#main").css("background-color").to_color().m_a("-=0.01").to_rgba());
 				if (i < 1){
 					setTimeout(function() {
 						px();
