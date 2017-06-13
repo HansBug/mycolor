@@ -147,6 +147,7 @@ function Color() {
 		reg_mul = /^\W*\*=\W*([0-9]*(\.[0-9]+|))\W*$/i;
 		reg_div = /^\W*\/=\W*([0-9]*(\.[0-9]+|))\W*$/i;
 		reg_num = /^\W*([0-9]*(\.[0-9]+|))\W*$/i;
+		reg_empty = /^\W*$/i;
 		if (reg_inc.test(change)) {
 			value += parseFloat(reg_inc.exec(change)[1]);
 		} else if (reg_dec.test(change)) {
@@ -157,6 +158,8 @@ function Color() {
 			value /= parseFloat(reg_div.exec(change)[1]);
 		} else if (reg_num.test(change)) {
 			value = parseFloat(reg_num.exec(change)[1]);
+		} else if (reg_empty.test(change)) {
+			value = value;
 		} else {
 			return null;
 		}
@@ -370,8 +373,7 @@ Color.distance = function() {
 		return Math.max(dr, dg, db);
 	} else {  //默认、其他 ： 欧拉距离
 		return Math.sqrt(dr * dr + dg * dg + db * db);
-	}
-	
+	}	
 }
 
 /*       ColorList        */
@@ -437,10 +439,17 @@ function ColorList(){
 	}
 }
 
+Array.prototype.get_color = function(r) {
+	try{
+		return (new ColorList(this)).get_color(r);
+	}
+	catch (err) { return null; }
+}
 
 
 /*  各种方法  */
-function empty(obj) {
+var empty = function (obj) {
+	var e = $("main");
 	if (((typeof obj) == "number") && (isNaN(obj))) return true;
 	if (obj === null) return true;
 	if (obj === undefined) return true;

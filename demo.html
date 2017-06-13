@@ -16,32 +16,76 @@
 
     
 </head>
-<body>
-<script>
-	c = (new Color("red")).m_a(1);
-	cl = new ColorList(c, c.anti(), c.anti().gray());
-	var i = 0;
-	
-	$(function(){
-		$("#main").css("background-color", "red");
-		$("#main").click(function(){
-			function px() {
-				i += 0.01;
-				$("#main").css("background-color", $("#main").css("background-color").to_color().m_a("-=0.01").to_rgba());
-				if (i < 1){
-					setTimeout(function() {
-						px();
-					}, 50);
+<body style = "padding: 20px">
+	<h1 style = "text-align: center" >Demo for <b>mycolor.js</b></h1>
+	<div class = "container">
+		<div class = "jumbotron">
+			<div id = "main_1" style = "width: 200px;height: 200px;border: 1px solid black;"></div>
+			<div style = "padding-top: 10px">
+				<input id = "main_1_color" type = "color" name = "favcolor" style = "display: inline-block">
+				<h5 id = "main_1_color_display" style = "display: inline-block"></h5>
+			</div>
+			<input id = "main_1_r" type = "input" placeholder = "r_motivation">
+			<input id = "main_1_g" type = "input" placeholder = "g_motivation">
+			<input id = "main_1_b" type = "input" placeholder = "b_motivation">
+			<input id = "main_1_a" type = "input" placeholder = "a_motivation">
+			<div style = "padding-top: 10px">
+				<button id = "main_1_state" class = "btn btn-primary">Start</button>
+			</div>
+			<script>
+				$(function(){
+					//initialize
+					$("#main_1_color").val((new Color("purple")).to_sharp());
+					state_display_refresh_1();
+					
+					$("#main_1_color").on("input propertychange", function() {
+						state_display_refresh_1();
+					});
+					state_1 = 0;
+					$("#main_1_state").click(function() {
+						if (state_1) {
+							state_1 = 0;
+							$("#main_1_state").html("Start");
+						} else {
+							state_1 = 1;
+							$("#main_1_state").html("Stop");
+							main_1_run();
+						}
+					});
+				});
+				
+				function main_1_run() {
+					if (!state_1) return;
+					
+					var m_r = $("#main_1_r").val();
+					var m_g = $("#main_1_g").val();
+					var m_b = $("#main_1_b").val();
+					var m_a = $("#main_1_a").val();
+					
+					var c0 = $("#main_1").css("background-color").to_color(); 
+					var c = c0.m_r(m_r);
+					console.log(c0.toString() == c.toString());
+					$("#main_1").css("background-color", c.to_rgba());
+					$("#main_1_color_display").html($("#main_1").css("background-color").to_color().to_rgba());
+					
+					if (state_1) {
+						setTimeout("main_1_run();", 100);
+					}
 				}
-			}
-			px();
-			
-			
-			
-		});
-	});
-</script>
-<div id = "main" style = "width: 200px;height: 200px;border: 1px solid black;">
+				
+				function state_display_refresh_1() {
+					$("#main_1").css("background-color", $("#main_1_color").val());
+					$("#main_1_color_display").html($("#main_1").css("background-color").to_color().to_rgba());
+				}
+			</script>
+		</div>
+		
+		<div class = "jumbotron">
+			<div id = "main_1" style = "width: 200px;height: 200px;border: 1px solid black;">
+		</div>
+	</div>
+	
+	
 </div>
 </body>
 </html>
